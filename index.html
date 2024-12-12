@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 25px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #444;
+        }
+        input {
+            margin-bottom: 20px;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        input:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+        }
+        button {
+            padding: 12px;
+            font-size: 18px;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #45a049, #4CAF50);
+        }
+        .output {
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(90deg, #e7f3e7, #ffffff);
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .output p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById('full-name').value;
+            const fatherName = document.getElementById('father-name').value;
+            const motherName = document.getElementById('mother-name').value;
+            const email = document.getElementById('email').value;
+            const dob = document.getElementById('dob').value;
+            const phone = document.getElementById('phone').value;
+
+            const output = document.getElementById('output');
+            output.innerHTML = `
+                <h2>Registration Details</h2>
+                <p><strong>Full Name:</strong> ${fullName}</p>
+                <p><strong>Father's Name:</strong> ${fatherName}</p>
+                <p><strong>Mother's Name:</strong> ${motherName}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Date of Birth:</strong> ${dob}</p>
+                <p><strong>Phone Number:</strong> ${phone}</p>
+            `;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Registration Form</h1>
+        <form onsubmit="handleSubmit(event)">
+            <label for="full-name">Name:</label>
+            <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+
+            <label for="father-name">Father's Name:</label>
+            <input type="text" id="father-name" name="father-name" placeholder="Enter your father's name" required>
+
+            <label for="mother-name">Mother's Name:</label>
+            <input type="text" id="mother-name" name="mother-name" placeholder="Enter your mother's name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="output" id="output"></div>
+    </div>
+</body>
+</html>
